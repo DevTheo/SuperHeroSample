@@ -1,8 +1,7 @@
-﻿@using SuperheroSample.Components.Widgets.SuperHero
+﻿@page "/superheroes"
 
-
-<SuperHeroContent />
-
-@code {
-    
-}
+<label>
+    Search For Hero? <input name="heroName" />
+</label>
+<button type="button" hx-get="/api/superheroes/search" hx-target="#heroContent" hx-include="input[name=heroName]" hx-swap="innerHTML">Search</button>
+<div id="heroContent" />

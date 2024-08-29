@@ -18,10 +18,16 @@ public class MainHandler
         });
     }
 
-    public static async Task<RazorComponentResult<SuperHeroContent>> SearchForHero(ISuperHeroDataRepository repo, string heroName)
+    public static async Task<RazorComponentResult<SuperHeroContent>> SearchForHeroes(ISuperHeroDataRepository repo, string heroName)
     {
-        var hero = await repo.GetSuperHeroByNameAsync(heroName);
+        var heroes = await repo.GetSuperHeroesByNameAsync(heroName);
         
-        return new RazorComponentResult<SuperHeroContent>(new { SuperHero = hero });
+        return new RazorComponentResult<SuperHeroContent>(new { SuperHeroes = heroes });
+    }
+    public static async Task<RazorComponentResult<SuperHeroContentDetails>> GetHero(ISuperHeroDataRepository repo, int id)
+    {
+        var hero = await repo.GetSuperHeroByIdAsync(id);
+        
+        return new RazorComponentResult<SuperHeroContentDetails>(new { SuperHero = hero });
     }
 }

@@ -5,21 +5,46 @@ namespace SuperheroSample.Repositories;
 
 public interface ISuperHeroDataRepository
 {
-    Task<SuperHero?> GetSuperHeroByNameAsync(string name);
+    Task<List<SuperHero>> GetSuperHeroesByNameAsync(string name);
+    Task<SuperHero?> GetSuperHeroByIdAsync(int id);
 }
 
 public class SuperHeroDataRepository: ISuperHeroDataRepository
 {
-    private readonly DbConnection _connection;
-    public SuperHeroDataRepository()
+    private const string SuperheroByIdSql = "SELECT * FROM SuperHeroes WHERE Id = @Id";
+    private const string SearchForSuperheroesByNameSql = @"
+        SELECT * 
+        FROM SuperHeroes 
+        WHERE LOWER(Name) like '%' || @Name || '%'";
+
+    private DbConnection GetConnection()
     {
-        _connection = new SqliteConnection("AppData/Superhero.db");
+        var result = new SqliteConnection("datasource=AppData/Superheroes.db");
+        result.Open();
+        return result;
+    }
+    
+    public async Task<List<SuperHero>> GetSuperHeroesByNameAsync(string name)
+    {
+        using var connection = GetConnection();
+        return (await connection.QueryAsync<SuperHero>(SearchForSuperheroesByNameSql, new { Name = name.ToLower() }))
+            .ToList();
     }
 
-    public Task<SuperHero?> GetSuperHeroByNameAsync(string name)
+    public async Task<SuperHero?> GetSuperHeroByIdAsync(int id)
     {
-        return _connection.QueryFirstOrDefaultAsync<SuperHero>("SELECT * FROM SuperHero WHERE Name ilike '%' | @Name | '%'", new { Name = name });
+        using var connection = GetConnection();
+        return await  connection.QueryFirstOrDefaultAsync<SuperHero>(SuperheroByIdSql, new { Id = id });
     }
 }
 
-public record SuperHero(int Id, string Name, string EyeColor, string HairColor, int AppearanceCount, string FirstAppearance, string FirstAppearanceYear); 
+public class SuperHero(long id, string name, string eye_color, string hair_color, long appearance_count, string first_appearance, string first_appearance_year)
+{
+    public long Id { get; } = id; 
+    public string Name { get; } = name;
+    public string EyeColor { get; } = eye_color;
+    public string HairColor { get; } = hair_color;
+    public long AppearanceCount { get; } = appearance_count;
+    public string FirstAppearance { get; } = first_appearance;
+    public string FirstAppearanceYear { get; } = first_appearance_year;
+} 

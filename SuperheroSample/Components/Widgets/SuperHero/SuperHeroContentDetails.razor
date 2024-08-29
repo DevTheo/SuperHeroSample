@@ -1,0 +1,35 @@
+﻿@using SuperheroSample.Repositories
+@if (SuperHero != null)
+{
+    <hr/>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>@SuperHero.Name</td>
+        </tr>
+        <tr>
+            <td>Hair Color</td>
+            <td>@SuperHero.HairColor</td>
+        </tr>
+        <tr>
+            <td>Eye Color</td>
+            <td>@SuperHero.EyeColor</td>
+        </tr>
+        <tr>
+            <td>Appearance Count</td>
+            <td>@SuperHero.AppearanceCount</td>
+        </tr>
+        <tr>
+            <td>First Appearance</td>
+            <td>@SuperHero.FirstAppearance</td>
+        </tr>
+        <tr>
+            <td>First Appearance Year</td>
+            <td>@SuperHero.FirstAppearanceYear</td>
+        </tr>
+    </table>
+}
+
+@code {
+    [Parameter] public SuperHero? SuperHero { get; set; }
+}

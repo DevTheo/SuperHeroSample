@@ -1,6 +1,16 @@
 ﻿@using SuperheroSample.Repositories
-<h3>SuperHeroContent</h3>
 
+<ul>
+@foreach (var hero in SuperHeroes)
+{
+    <li hx-get="/api/superheroes/@hero.Id" hx-target="#heroDetails" hx-swap="innerHTML" hx-trigger="click" style="cursor:pointer">
+        @hero.Name
+    </li>
+}
+</ul>
+<div id="heroDetails">
+    <SuperHeroContentDetails />
+</div>
 @code {
-    [Parameter] public SuperHero? SuperHero { get; set; }
+    [Parameter] public List<SuperHero> SuperHeroes { get; set; } = new();
 }

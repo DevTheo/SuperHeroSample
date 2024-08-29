@@ -9,7 +9,7 @@ builder.Services
     .AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddSingleton<ISuperHeroDataRepository, SuperHeroDataRepository>()
+builder.Services.AddSingleton<ISuperHeroDataRepository, SuperHeroDataRepository>();
 
 var app = builder.Build();
 

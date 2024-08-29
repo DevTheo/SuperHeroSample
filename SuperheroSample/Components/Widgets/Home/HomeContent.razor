@@ -2,7 +2,7 @@
 <label>
     What is your Name? <input name="visitorName" value=@(VisitorName) />
 </label>
-<button type="button" hx-get="/set-name" hx-target="#homeContent" hx-include="input[name=visitorName]" hx-swap="innerHTML">Save</button>
+<button type="button" hx-get="/api/set-name" hx-target="#homeContent" hx-include="input[name=visitorName]" hx-swap="innerHTML">Save</button>
 
 <div id="homeContent">
     <HomeChildContent VisitorName=@(VisitorName) />
