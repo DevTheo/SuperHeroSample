@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperheroSample", "SuperheroSample\SuperheroSample.csproj", "{9A8523A5-E163-4664-A2E1-7EC0C1F1A42C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperheroSample.Tests", "SuperheroSample.Tests\SuperheroSample.Tests.csproj", "{B82DB277-8D8F-49CE-8845-83982A5B5B56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{9A8523A5-E163-4664-A2E1-7EC0C1F1A42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A8523A5-E163-4664-A2E1-7EC0C1F1A42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A8523A5-E163-4664-A2E1-7EC0C1F1A42C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B82DB277-8D8F-49CE-8845-83982A5B5B56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B82DB277-8D8F-49CE-8845-83982A5B5B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B82DB277-8D8F-49CE-8845-83982A5B5B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B82DB277-8D8F-49CE-8845-83982A5B5B56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

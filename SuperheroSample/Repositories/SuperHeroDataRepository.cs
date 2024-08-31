@@ -1,4 +1,5 @@
 ﻿using System.Data.Common;
+using System.Diagnostics.CodeAnalysis;
 using Dapper;
 using Microsoft.Data.Sqlite;
 namespace SuperheroSample.Repositories;
@@ -9,6 +10,7 @@ public interface ISuperHeroDataRepository
     Task<SuperHero?> GetSuperHeroByIdAsync(int id);
 }
 
+[ExcludeFromCodeCoverage]
 public class SuperHeroDataRepository: ISuperHeroDataRepository
 {
     private const string SuperheroByIdSql = "SELECT * FROM SuperHeroes WHERE Id = @Id";
@@ -38,6 +40,7 @@ public class SuperHeroDataRepository: ISuperHeroDataRepository
     }
 }
 
+[ExcludeFromCodeCoverage]
 public class SuperHero(long id, string name, string eye_color, string hair_color, long appearance_count, string first_appearance, string first_appearance_year)
 {
     public long Id { get; } = id; 
