@@ -1,7 +1,9 @@
 ﻿@page "/superheroes"
+@rendermode InteractiveServer
 
+<h1>Super Hero Search Htmx + Blazor example.</h1>
 <label>
     Search For Hero? <input name="heroName" />
 </label>
-<button type="button" hx-get="/api/superheroes/search" hx-target="#heroContent" hx-include="input[name=heroName]" hx-swap="innerHTML">Search</button>
+<button class="btn btn-primary" type="button" hx-get="/api/superheroes/search" hx-target="#heroContent" hx-include="input[name=heroName]" hx-swap="innerHTML">Search</button>
 <div id="heroContent" />
