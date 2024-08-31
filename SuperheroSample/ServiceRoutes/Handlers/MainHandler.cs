@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
-using SuperheroSample.Components.Widgets;
-using SuperheroSample.Components.Widgets.Home;
 using SuperheroSample.Components.Widgets.SuperHero;
+using SuperheroSample.Components.Widgets.HelloVisitor;
 using SuperheroSample.Repositories;
 
 namespace SuperheroSample.ServiceRoutes.Handlers;
@@ -10,9 +8,9 @@ namespace SuperheroSample.ServiceRoutes.Handlers;
 public class MainHandler
 {
     // These methods can accept injected dependencies
-    public static RazorComponentResult<HomeChildContent> SetNameAsync(string visitorName)
+    public static RazorComponentResult<HelloVisitorChildContent> SetNameAsync(string visitorName)
     {
-        return new RazorComponentResult<HomeChildContent>(
+        return new RazorComponentResult<HelloVisitorChildContent>(
         new {
             VisitorName = visitorName
         });
